@@ -1,6 +1,14 @@
 import { Global, css } from "@emotion/react";
 
 const style = css`
+  body,
+  body::before,
+  body::after,
+  body *,
+  body *::before,
+  body *::after {
+    box-sizing: border-box;
+  }
   body {
     padding: 0;
     margin: 0;

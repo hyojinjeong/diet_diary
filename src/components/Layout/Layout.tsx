@@ -1,18 +1,30 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
 import { Box, Container } from "@mui/material";
+import { ContentWrapper } from "./style";
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 const Layout = (props: Props) => {
   return (
-    <Box sx={{ flexDirection: "row" }}>
+    <>
       <Header />
       <Sidebar />
-      <Container>{props.children}</Container>
-    </Box>
+      <ContentWrapper>
+        <Container
+          maxWidth="xl"
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            height: "100%",
+          }}
+        >
+          {props.children}
+        </Container>
+      </ContentWrapper>
+    </>
   );
 };
 

@@ -6,15 +6,11 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 
-interface Props {
-  children: React.ReactNode;
-}
-
 const Header = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed" color="secondary">
-        <Toolbar>
+        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <IconButton
             size="large"
             edge="start"
