@@ -1,18 +1,17 @@
-import React, { useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
-import { Container, Box } from "@mui/material";
+import { Container } from "@mui/material";
 import { ContentWrapper } from "./style";
 
 interface Props {
-  children: JSX.Element | JSX.Element[];
+  children: JSX.Element;
 }
 
 const Layout = (props: Props) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(true);
 
   const toggleSidebar = useCallback(() => {
-    console.log("log");
     setIsOpen((prev) => !prev);
   }, [isOpen]);
 
@@ -28,6 +27,7 @@ const Layout = (props: Props) => {
             justifyContent: "center",
             height: "100%",
             width: "100%",
+            padding: "24px",
           }}
         >
           {props.children}
