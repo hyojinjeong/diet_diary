@@ -1,6 +1,9 @@
 import { Global, css } from "@emotion/react";
 
 const style = css`
+  html {
+    background-color: #f5f7fb;
+  }
   body,
   body::before,
   body::after,

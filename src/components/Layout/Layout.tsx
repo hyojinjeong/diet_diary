@@ -5,7 +5,7 @@ import { Container } from "@mui/material";
 import { ContentWrapper } from "./style";
 
 interface Props {
-  children: JSX.Element;
+  children: JSX.Element | JSX.Element[];
 }
 
 const Layout = (props: Props) => {
@@ -25,9 +25,9 @@ const Layout = (props: Props) => {
           sx={{
             display: "flex",
             justifyContent: "center",
+            flexDirection: "column",
             height: "100%",
             width: "100%",
-            padding: "24px",
           }}
         >
           {props.children}
