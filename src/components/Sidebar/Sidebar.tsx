@@ -6,28 +6,55 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
+import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
+import HomeIcon from "@mui/icons-material/Home";
+import BarChartIcon from "@mui/icons-material/BarChart";
+import SettingsIcon from "@mui/icons-material/Settings";
 
-const Sidebar = () => {
+interface SidebarProps {
+  isOpen: boolean;
+  toggleSidebar: () => void;
+}
+
+const Sidebar = ({ isOpen, toggleSidebar }: SidebarProps) => {
   return (
     <Drawer
       anchor={"left"}
-      open={true}
+      open={isOpen}
       variant={"persistent"}
-      sx={{ width: 250 }}
+      sx={{ width: 200 }}
     >
-      <Box sx={{ width: 250 }} role="presentation">
+      <Box sx={{ width: 200 }} role="presentation">
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem key={text}>
-              <ListItemButton>
-                <ListItemIcon>
-                  <InboxIcon />
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          <ListItem key={"close"}>
+            <ListItemButton>
+              <ListItemText primary={"DIET_LOG"} />
+              <ListItemIcon onClick={toggleSidebar}>
+                <KeyboardDoubleArrowLeftIcon />
+              </ListItemIcon>
+            </ListItemButton>
+          </ListItem>
+          <ListItem key={"E"}>
+            <ListItemText primary={""} />
+          </ListItem>
+          <ListItem key={"HOME"}>
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText primary={"HOME"} />
+          </ListItem>
+          <ListItem key={"REPORT"}>
+            <ListItemIcon>
+              <BarChartIcon />
+            </ListItemIcon>
+            <ListItemText primary={"REPORT"} />
+          </ListItem>
+          <ListItem key={"SETTING"}>
+            <ListItemIcon>
+              <SettingsIcon />
+            </ListItemIcon>
+            <ListItemText primary={"SETTING"} />
+          </ListItem>
         </List>
       </Box>
     </Drawer>

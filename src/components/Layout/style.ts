@@ -1,7 +1,13 @@
 import styled from "@emotion/styled";
 
-export const ContentWrapper = styled.div({
-  marginTop: "64px",
-  marginLeft: "250px",
-  height: `calc(100vh - 64px)`,
-});
+interface ContentProps {
+  isOpen: boolean;
+}
+
+export const ContentWrapper = styled("div")`
+  margin-top: 64px;
+  margin-left: ${(props: ContentProps) => (props.isOpen ? "200px" : 0)};
+  min-width: 350px;
+  height: calc(100vh - 64px);
+  transition: margin-left 0.5s;
+`;
