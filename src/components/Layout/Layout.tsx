@@ -27,7 +27,8 @@ const Layout = (props: Props) => {
             justifyContent: "center",
             flexDirection: "column",
             height: "100%",
-            width: "100%",
+            width: "85%",
+            padding: 0,
           }}
         >
           {props.children}

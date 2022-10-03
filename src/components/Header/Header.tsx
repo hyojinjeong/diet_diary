@@ -14,7 +14,7 @@ interface HeaderProps {
 const Header = ({ isOpen, toggleSidebar }: HeaderProps) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed" color="secondary">
+      <AppBar position="fixed" sx={{ backgroundColor: "#8F83D6" }}>
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <IconButton
             size="large"

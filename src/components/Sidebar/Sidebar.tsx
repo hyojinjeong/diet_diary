@@ -22,9 +22,9 @@ const Sidebar = ({ isOpen, toggleSidebar }: SidebarProps) => {
       anchor={"left"}
       open={isOpen}
       variant={"persistent"}
-      sx={{ width: 230 }}
+      sx={{ width: 250 }}
     >
-      <Box sx={{ width: 230 }} role="presentation">
+      <Box sx={{ width: 250 }} role="presentation">
         <List>
           <ListItem key={"close"}>
             <ListItemButton>

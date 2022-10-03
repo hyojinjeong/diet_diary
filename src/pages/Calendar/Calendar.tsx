@@ -1,6 +1,6 @@
 import Layout from "../../components/Layout/Layout";
 import { DAYS } from "../../constants/date";
-import { CalendarHeader, Days, Dates } from "./style";
+import { CalendarHeader, Days, DatesGrid, Dates } from "./style";
 
 const Calendar = () => {
   return (
@@ -10,7 +10,13 @@ const Calendar = () => {
           <Days>{day}</Days>
         ))}
       </CalendarHeader>
-      <Dates />
+      <DatesGrid>
+        {Array(42)
+          .fill(0)
+          .map((_, i) => (
+            <Dates>{i}</Dates>
+          ))}
+      </DatesGrid>
     </Layout>
   );
 };
