@@ -1,8 +1,11 @@
 import Layout from "../../components/Layout/Layout";
 import { DAYS } from "../../constants/date";
 import { CalendarHeader, Days, DatesGrid, Dates } from "./style";
+import { getMonthDate, getTodayMonth } from "../../utils/date"
 
 const Calendar = () => {
+  let month = getMonthDate(2022, 10);
+  console.log(month);
   return (
     <Layout>
       <CalendarHeader>
@@ -11,11 +14,11 @@ const Calendar = () => {
         ))}
       </CalendarHeader>
       <DatesGrid>
-        {Array(42)
-          .fill(0)
-          .map((_, i) => (
-            <Dates>{i}</Dates>
-          ))}
+        {month.map((dates)=>(
+          <Dates isThisMonth={dates.month === getTodayMonth() ? true : false}>
+            {dates.date}
+          </Dates>
+        ))}
       </DatesGrid>
     </Layout>
   );
