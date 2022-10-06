@@ -23,12 +23,12 @@ const Layout = (props: Props) => {
         <Container
           maxWidth="xl"
           sx={{
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
             height: "100%",
-            width: "85%",
-            padding: 0,
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-around",
+            flexDirection: "column",
           }}
         >
           {props.children}

@@ -5,9 +5,9 @@ interface ContentProps {
 }
 
 export const ContentWrapper = styled("div")`
-  margin-top: 64px;
+  padding-top: 64px;
   margin-left: ${(props: ContentProps) => (props.isOpen ? "250px" : 0)};
   min-width: 350px;
-  height: calc(100vh - 64px);
+  height: 100vh;
   transition: margin-left 0.5s;
 `;

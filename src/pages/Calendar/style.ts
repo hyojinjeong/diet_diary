@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
-interface DateProps{
-  isThisMonth: boolean
+interface DateProps {
+  isThisMonth: boolean;
 }
 
 export const CalendarHeader = styled("div")`
@@ -29,7 +29,8 @@ export const Days = styled("span")`
 export const DatesGrid = styled("div")`
   display: grid;
   grid-template-columns: repeat(7, calc(100% / 7));
-  grid-auto-rows: calc(calc(80vh - 64px) / 6);
+  width: 100%;
+  height: calc(100% - 3rem);
 `;
 
 export const Dates = styled("div")`
@@ -42,5 +43,5 @@ export const Dates = styled("div")`
     border-right: 1px solid #b1add6;
   }
   font-weight: bold;
-  color: ${(props:DateProps) => (props.isThisMonth ? "black" : "#b7b7b7")}
+  color: ${(props: DateProps) => (props.isThisMonth ? "black" : "#b7b7b7")};
 `;

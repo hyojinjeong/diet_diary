@@ -50,14 +50,14 @@ const getMonthDate = (year: number, month: number) => {
   }
   return monthArr.map(el => {
     return {
+      key: formatDate(el.getFullYear(), el.getMonth(), el.getDate()),
       year: el.getFullYear(),
       month: el.getMonth() + 1,
       date: el.getDate(),
-      day: el.getDay()
+      day: el.getDay(),
     }
   });
 }
-
 
 export { 
   getTodayYear, 

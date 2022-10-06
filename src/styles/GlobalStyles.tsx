@@ -21,7 +21,9 @@ const style = css`
     display: flex;
     cursor: pointer;
     outline: none;
-    border-radius: 3px;
+    width: auto;
+    background: transparent;
+    border: none;
   }
   input {
     display: flex;
