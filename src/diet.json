@@ -2,59 +2,140 @@
   {
     "dates": "2022-10-07",
     "user": "jn0830",
-    "diets": [
-      {
-        "type": "br",
+    "diets": {
+      "breakfast": {
         "title": "brunch",
         "time": "09:00",
         "memo": "It's good.",
         "score": 3,
         "photo": "Y"
       },
-      {
-        "type": "lun",
-        "title": "brunch",
-        "time": "09:00",
-        "memo": "It's good.",
-        "score": 3,
-        "photo": "Y"
-      },
-      {
-        "type": "din",
-        "time": "09:00",
+      "dinner": {
+        "time": "20:00",
         "memo": "It's good.",
         "score": 3,
         "photo": "Y"
       }
-    ]
+    }
   },
   {
-    "dates": "2022-10-07",
+    "dates": "2022-10-09",
     "user": "jn0830",
-    "diets": [
-      {
-        "type": "br",
+    "diets": {
+      "breakfast": {
         "title": "brunch",
         "time": "09:00",
         "memo": "It's good.",
         "score": 3,
         "photo": "Y"
       },
-      {
-        "type": "lun",
-        "title": "brunch",
-        "time": "09:00",
+      "lunch": {
+        "time": "13:00",
         "memo": "It's good.",
         "score": 3,
         "photo": "Y"
       },
-      {
-        "type": "din",
-        "time": "09:00",
+      "dinner": {
+        "time": "20:00",
         "memo": "It's good.",
         "score": 3,
         "photo": "Y"
       }
-    ]
+    }
+  },
+  {
+    "dates": "2022-10-11",
+    "user": "jn0830",
+    "diets": {
+      "breakfast": {
+        "title": "brunch",
+        "time": "09:00",
+        "memo": "It's good.",
+        "score": 3,
+        "photo": "Y"
+      },
+      "dinner": {
+        "time": "13:00",
+        "memo": "It's good.",
+        "score": 3,
+        "photo": "Y"
+      }
+    }
+  },
+  {
+    "dates": "2022-10-13",
+    "user": "jn0830",
+    "diets": {
+      "breakfast": {
+        "title": "brunch",
+        "time": "09:00",
+        "memo": "It's good.",
+        "score": 3,
+        "photo": "Y"
+      },
+      "dinner": {
+        "time": "13:00",
+        "memo": "It's good.",
+        "score": 3,
+        "photo": "Y"
+      }
+    }
+  },
+  {
+    "dates": "2022-10-18",
+    "user": "jn0830",
+    "diets": {
+      "breakfast": {
+        "title": "brunch",
+        "time": "09:00",
+        "memo": "It's good.",
+        "score": 3,
+        "photo": "Y"
+      },
+      "dinner": {
+        "time": "13:00",
+        "memo": "It's good.",
+        "score": 3,
+        "photo": "Y"
+      }
+    }
+  },
+  {
+    "dates": "2022-10-20",
+    "user": "jn0830",
+    "diets": {
+      "breakfast": {
+        "title": "brunch",
+        "time": "09:00",
+        "memo": "It's good.",
+        "score": 3,
+        "photo": "Y"
+      },
+      "dinner": {
+        "time": "13:00",
+        "memo": "It's good.",
+        "score": 3,
+        "photo": "Y"
+      }
+    }
+  },
+  {
+    "dates": "2022-10-21",
+    "user": "jn0830",
+    "diets": {
+      "breakfast": {
+        "title": "brunch",
+        "time": "09:00",
+        "memo": "It's good.",
+        "score": 3,
+        "photo": "Y"
+      },
+      "dinner": {
+        "time": "13:00",
+        "memo": "It's good.",
+        "score": 3,
+        "photo": "Y"
+      }
+    }
   }
 ]
