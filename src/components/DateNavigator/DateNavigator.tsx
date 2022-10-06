@@ -3,7 +3,13 @@ import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { CurrentYearMonth } from "./style";
 
-const DateNavigator = () => {
+interface Props {
+  prevMonth: () => void;
+  nextMonth: () => void;
+  curMonth: number;
+}
+
+const DateNavigator = ({ prevMonth, nextMonth, curMonth }: Props) => {
   return (
     <Box
       sx={{
@@ -16,11 +22,11 @@ const DateNavigator = () => {
       }}
     >
       <button>
-        <NavigateBeforeIcon fontSize="large" />
+        <NavigateBeforeIcon fontSize="large" onClick={prevMonth} />
       </button>
-      <CurrentYearMonth>2022.10</CurrentYearMonth>
+      <CurrentYearMonth>{`2022년 ${curMonth}월`}</CurrentYearMonth>
       <button>
-        <NavigateNextIcon fontSize="large" />
+        <NavigateNextIcon fontSize="large" onClick={nextMonth} />
       </button>
     </Box>
   );

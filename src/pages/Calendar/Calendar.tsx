@@ -25,14 +25,21 @@ const Calendar = () => {
     setCurMonth((prev) => --prev);
   };
 
+  const nextMonth = () => {
+    setCurMonth((prev) => ++prev);
+  };
+
   useEffect(() => {
-    console.log("changed", curMonth);
     setMonthDate(getMonthDate(curYear, curMonth));
   }, [curYear, curMonth]);
 
   return (
     <Layout>
-      <DateNavigator />
+      <DateNavigator
+        prevMonth={prevMonth}
+        nextMonth={nextMonth}
+        curMonth={curMonth}
+      />
       <Box
         sx={{
           height: "calc(100% - 5rem)",
@@ -46,7 +53,7 @@ const Calendar = () => {
         </CalendarHeader>
         <DatesGrid>
           {monthDate.map((dates) => (
-            <Dates isThisMonth={dates.month === getTodayMonth() ? true : false}>
+            <Dates isThisMonth={dates.month === curMonth ? true : false}>
               {dates.date}
             </Dates>
           ))}
