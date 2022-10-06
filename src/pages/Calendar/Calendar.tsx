@@ -35,11 +35,8 @@ const Calendar = () => {
       <DateNavigator />
       <Box
         sx={{
-          height: "100%",
+          height: "calc(100% - 5rem)",
           width: "100%",
-          paddingTop: "1.5rem",
-          paddingBottom: "1.5rem",
-          backgroundColor: "pink",
         }}
       >
         <CalendarHeader>
@@ -54,7 +51,6 @@ const Calendar = () => {
             </Dates>
           ))}
         </DatesGrid>
-        <button onClick={prevMonth}>button</button>
       </Box>
     </Layout>
   );

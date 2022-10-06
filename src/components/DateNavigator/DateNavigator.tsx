@@ -7,12 +7,12 @@ const DateNavigator = () => {
   return (
     <Box
       sx={{
-        maxWidth: 200,
+        minWidth: 200,
         height: "3rem",
-        backgroundColor: "primary.dark",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
+        padding: "1rem",
       }}
     >
       <button>
