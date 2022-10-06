@@ -36,23 +36,26 @@ const Sidebar = ({ isOpen, toggleSidebar }: SidebarProps) => {
           <ListItem key={"E"}>
             <ListItemText primary={""} />
           </ListItem>
-          <ListItem key={"HOME"}>
+          <ListItem key={"Ee"}>
+            <ListItemText primary={""} />
+          </ListItem>
+          <ListItem key={"메인"}>
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
-            <ListItemText primary={"HOME"} />
+            <ListItemText primary={"홈"} />
           </ListItem>
           <ListItem key={"REPORT"}>
             <ListItemIcon>
               <BarChartIcon />
             </ListItemIcon>
-            <ListItemText primary={"REPORT"} />
+            <ListItemText primary={"통계"} />
           </ListItem>
           <ListItem key={"SETTING"}>
             <ListItemIcon>
               <SettingsIcon />
             </ListItemIcon>
-            <ListItemText primary={"SETTING"} />
+            <ListItemText primary={"설정"} />
           </ListItem>
         </List>
       </Box>

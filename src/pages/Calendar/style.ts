@@ -3,18 +3,24 @@ import styled from "@emotion/styled";
 interface DateProps {
   isThisMonth: boolean;
 }
+interface MonthProps {
+  monthDate: number;
+}
 
 export const CalendarHeader = styled("div")`
   display: grid;
   grid-template-columns: repeat(7, calc(100% / 7));
   height: 3rem;
   width: 100%;
+  border-bottom: 1px solid #b1add6;
   & :first-of-type {
     border-left: 1px solid #b1add6;
+    border-top-left-radius: 1rem;
   }
-  border-top: 1px solid #b1add6;
-  border-right: 1px solid #b1add6;
-  border-bottom: 1px solid #b1add6;
+  & :last-of-type {
+    border-right: 1px solid #b1add6;
+    border-top-right-radius: 1rem;
+  }
 `;
 
 export const Days = styled("span")`
@@ -22,6 +28,7 @@ export const Days = styled("span")`
   align-items: center;
   padding-left: 0.5rem;
   background-color: #f6f2ff;
+  border-top: 1px solid #b1add6;
   color: #463e8f;
   font-weight: bold;
 `;
@@ -37,11 +44,19 @@ export const Dates = styled("div")`
   border-left: 1px solid #b1add6;
   border-bottom: 1px solid #b1add6;
   background-color: white;
-  padding-left: 0.5rem;
-  padding-top: 0.5rem;
   &:nth-of-type(7n) {
     border-right: 1px solid #b1add6;
   }
-  font-weight: bold;
+  &:nth-of-type(${(props: MonthProps) => props.monthDate - 6}) {
+    border-bottom-left-radius: 1rem;
+  }
+  &:last-of-type {
+    border-bottom-right-radius: 1rem;
+  }
+`;
+
+export const DatesNum = styled("div")`
   color: ${(props: DateProps) => (props.isThisMonth ? "black" : "#b7b7b7")};
+  font-weight: bold;
+  margin: 0.5rem;
 `;

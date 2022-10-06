@@ -3,7 +3,7 @@ import Layout from "../../components/Layout/Layout";
 import { Box } from "@mui/material";
 import DateNavigator from "../../components/DateNavigator/DateNavigator";
 import { DAYS } from "../../constants/date";
-import { CalendarHeader, Days, DatesGrid, Dates } from "./style";
+import { CalendarHeader, Days, DatesGrid, Dates, DatesNum } from "./style";
 import { getTodayYear, getTodayMonth, getMonthDate } from "../../utils/date";
 
 interface MonthDate {
@@ -60,8 +60,10 @@ const Calendar = () => {
         </CalendarHeader>
         <DatesGrid>
           {monthDate.map((dates) => (
-            <Dates isThisMonth={dates.month === curMonth ? true : false}>
-              {dates.date}
+            <Dates monthDate={monthDate.length}>
+              <DatesNum isThisMonth={dates.month === curMonth ? true : false}>
+                {dates.date}
+              </DatesNum>
             </Dates>
           ))}
         </DatesGrid>
