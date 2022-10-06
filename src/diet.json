@@ -1,0 +1,60 @@
+[
+  {
+    "dates": "2022-10-07",
+    "user": "jn0830",
+    "diets": [
+      {
+        "type": "br",
+        "title": "brunch",
+        "time": "09:00",
+        "memo": "It's good.",
+        "score": 3,
+        "photo": "Y"
+      },
+      {
+        "type": "lun",
+        "title": "brunch",
+        "time": "09:00",
+        "memo": "It's good.",
+        "score": 3,
+        "photo": "Y"
+      },
+      {
+        "type": "din",
+        "time": "09:00",
+        "memo": "It's good.",
+        "score": 3,
+        "photo": "Y"
+      }
+    ]
+  },
+  {
+    "dates": "2022-10-07",
+    "user": "jn0830",
+    "diets": [
+      {
+        "type": "br",
+        "title": "brunch",
+        "time": "09:00",
+        "memo": "It's good.",
+        "score": 3,
+        "photo": "Y"
+      },
+      {
+        "type": "lun",
+        "title": "brunch",
+        "time": "09:00",
+        "memo": "It's good.",
+        "score": 3,
+        "photo": "Y"
+      },
+      {
+        "type": "din",
+        "time": "09:00",
+        "memo": "It's good.",
+        "score": 3,
+        "photo": "Y"
+      }
+    ]
+  }
+]

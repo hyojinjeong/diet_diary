@@ -15,9 +15,8 @@ const DateNavigator = ({ prevMonth, nextMonth, curYear, curMonth }: Props) => {
     <Box
       sx={{
         height: "3rem",
-        display: "flex",
-        justifyContent: "space-between",
         alignItems: "center",
+        display: "flex",
         width: "100%",
         paddingTop: "3rem",
         paddingBottom: "3rem",
@@ -26,10 +25,18 @@ const DateNavigator = ({ prevMonth, nextMonth, curYear, curMonth }: Props) => {
       <CurrentYearMonth>{`${curYear}년 ${curMonth}월`}</CurrentYearMonth>
       <ButtonGroup>
         <button>
-          <ExpandLessIcon fontSize="large" onClick={prevMonth} />
+          <ExpandLessIcon
+            fontSize="large"
+            onClick={prevMonth}
+            sx={{ color: "#686868" }}
+          />
         </button>
         <button>
-          <ExpandMoreIcon fontSize="large" onClick={nextMonth} />
+          <ExpandMoreIcon
+            fontSize="large"
+            onClick={nextMonth}
+            sx={{ color: "#686868" }}
+          />
         </button>
       </ButtonGroup>
     </Box>
