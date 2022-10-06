@@ -1,6 +1,6 @@
-import Box from "@mui/material/Box";
-import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import { Box, ButtonGroup } from "@mui/material";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { CurrentYearMonth } from "./style";
 
 interface Props {
@@ -13,21 +13,24 @@ const DateNavigator = ({ prevMonth, nextMonth, curMonth }: Props) => {
   return (
     <Box
       sx={{
-        minWidth: 200,
         height: "3rem",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: "1rem",
+        width: "100%",
+        paddingTop: "3rem",
+        paddingBottom: "3rem",
       }}
     >
-      <button>
-        <NavigateBeforeIcon fontSize="large" onClick={prevMonth} />
-      </button>
       <CurrentYearMonth>{`2022년 ${curMonth}월`}</CurrentYearMonth>
-      <button>
-        <NavigateNextIcon fontSize="large" onClick={nextMonth} />
-      </button>
+      <ButtonGroup>
+        <button>
+          <ExpandLessIcon fontSize="large" onClick={prevMonth} />
+        </button>
+        <button>
+          <ExpandMoreIcon fontSize="large" onClick={nextMonth} />
+        </button>
+      </ButtonGroup>
     </Box>
   );
 };

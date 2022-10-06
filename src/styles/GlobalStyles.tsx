@@ -24,6 +24,7 @@ const style = css`
     width: auto;
     background: transparent;
     border: none;
+    padding: 0;
   }
   input {
     display: flex;

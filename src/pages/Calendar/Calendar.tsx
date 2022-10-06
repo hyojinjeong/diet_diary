@@ -42,7 +42,7 @@ const Calendar = () => {
       />
       <Box
         sx={{
-          height: "calc(100% - 5rem)",
+          height: "calc(100% - 9rem)",
           width: "100%",
         }}
       >
