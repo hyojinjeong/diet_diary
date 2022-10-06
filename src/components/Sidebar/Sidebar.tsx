@@ -9,6 +9,7 @@ import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrow
 import HomeIcon from "@mui/icons-material/Home";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import SettingsIcon from "@mui/icons-material/Settings";
+import { LogoMenu } from "./style";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -26,12 +27,10 @@ const Sidebar = ({ isOpen, toggleSidebar }: SidebarProps) => {
       <Box sx={{ width: 250 }} role="presentation">
         <List>
           <ListItem key={"close"}>
-            <ListItemButton>
+            <LogoMenu>
               <ListItemText primary={"DIET_LOG"} />
-              <ListItemIcon onClick={toggleSidebar}>
-                <KeyboardDoubleArrowLeftIcon />
-              </ListItemIcon>
-            </ListItemButton>
+              <KeyboardDoubleArrowLeftIcon onClick={toggleSidebar} />
+            </LogoMenu>
           </ListItem>
           <ListItem key={"E"}>
             <ListItemText primary={""} />
