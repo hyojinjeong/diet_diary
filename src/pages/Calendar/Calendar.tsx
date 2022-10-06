@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Layout from "../../components/Layout/Layout";
 import { Box } from "@mui/material";
 import DateNavigator from "../../components/DateNavigator/DateNavigator";
@@ -22,11 +22,17 @@ const Calendar = () => {
   );
 
   const prevMonth = () => {
-    setCurMonth((prev) => --prev);
+    const date = new Date(curYear, curMonth - 1, 1);
+    date.setMonth(date.getMonth() - 1);
+    setCurMonth(date.getMonth() + 1);
+    setCurYear(date.getFullYear());
   };
 
   const nextMonth = () => {
-    setCurMonth((prev) => ++prev);
+    const date = new Date(curYear, curMonth - 1, 1);
+    date.setMonth(date.getMonth() + 1);
+    setCurMonth(date.getMonth() + 1);
+    setCurYear(date.getFullYear());
   };
 
   useEffect(() => {
@@ -39,6 +45,7 @@ const Calendar = () => {
         prevMonth={prevMonth}
         nextMonth={nextMonth}
         curMonth={curMonth}
+        curYear={curYear}
       />
       <Box
         sx={{

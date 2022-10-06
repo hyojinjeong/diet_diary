@@ -7,9 +7,10 @@ interface Props {
   prevMonth: () => void;
   nextMonth: () => void;
   curMonth: number;
+  curYear: number;
 }
 
-const DateNavigator = ({ prevMonth, nextMonth, curMonth }: Props) => {
+const DateNavigator = ({ prevMonth, nextMonth, curYear, curMonth }: Props) => {
   return (
     <Box
       sx={{
@@ -22,7 +23,7 @@ const DateNavigator = ({ prevMonth, nextMonth, curMonth }: Props) => {
         paddingBottom: "3rem",
       }}
     >
-      <CurrentYearMonth>{`2022년 ${curMonth}월`}</CurrentYearMonth>
+      <CurrentYearMonth>{`${curYear}년 ${curMonth}월`}</CurrentYearMonth>
       <ButtonGroup>
         <button>
           <ExpandLessIcon fontSize="large" onClick={prevMonth} />
