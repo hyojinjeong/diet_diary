@@ -38,6 +38,7 @@ export const Days = styled("span")`
 export const DatesGrid = styled("div")`
   display: grid;
   grid-template-columns: repeat(7, calc(100% / 7));
+  grid-auto-rows: calc(calc(100vh - 15rem) / 6);
   width: 100%;
   height: calc(100% - 3rem);
 `;
@@ -61,19 +62,18 @@ export const Dates = styled("div")`
 export const DatesNum = styled("div")`
   color: ${(props: DateProps) => (props.isThisMonth ? "black" : "#b7b7b7")};
   font-weight: bold;
-  margin: 0.5rem;
+  margin: 6px;
 `;
 
 export const DietBand = styled("div")`
-  position: absolute;
   width: 100%;
-  height: 5px;
+  height: 15%;
+  border-radius: 10px;
+  margin: 2px 0;
   background: ${(props: DataProps) =>
     props.type === "diet"
-      ? "#7f2bcc"
+      ? "#8359C57D"
       : props.type === "drink"
-      ? "blue"
-      : "orange"};
-  top: ${(props: DataProps) =>
-    props.type === "diet" ? "50%" : props.type === "drink" ? "60%" : "70%"};
+      ? "#7D9BFB96"
+      : "#ADDDD0A1"};
 `;

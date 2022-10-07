@@ -13,6 +13,8 @@ import {
 } from "./style";
 import { getTodayYear, getTodayMonth, getMonthDate } from "../../utils/date";
 import diet from "../../diet.json";
+import drink from "../../drink.json";
+import body from "../../drink.json";
 
 interface MonthDate {
   key: string;
@@ -76,11 +78,11 @@ const Calendar = () => {
               {diet.find((e) => e.dates === dates.key) && (
                 <DietBand type={"diet"} />
               )}
-              {diet.find((e) => e.dates === dates.key) && (
+              {drink.find((e) => e.dates === dates.key) && (
                 <DietBand type={"drink"} />
               )}
-              {diet.find((e) => e.dates === dates.key) && (
-                <DietBand type={"work"} />
+              {body.find((e) => e.dates === dates.key) && (
+                <DietBand type={"body"} />
               )}
             </Dates>
           ))}
