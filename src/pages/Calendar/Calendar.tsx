@@ -47,7 +47,7 @@ const Calendar = () => {
   useEffect(() => {
     setMonthDate(getMonthDate(curYear, curMonth));
   }, [curYear, curMonth]);
-  console.log();
+
   return (
     <Layout>
       <DateNavigator
@@ -73,7 +73,15 @@ const Calendar = () => {
               <DatesNum isThisMonth={dates.month === curMonth ? true : false}>
                 {dates.date}
               </DatesNum>
-              {diet.find((e) => e.dates === dates.key) && <DietBand />}
+              {diet.find((e) => e.dates === dates.key) && (
+                <DietBand type={"diet"} />
+              )}
+              {diet.find((e) => e.dates === dates.key) && (
+                <DietBand type={"drink"} />
+              )}
+              {diet.find((e) => e.dates === dates.key) && (
+                <DietBand type={"work"} />
+              )}
             </Dates>
           ))}
         </DatesGrid>

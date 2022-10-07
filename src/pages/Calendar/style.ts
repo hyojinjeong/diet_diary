@@ -6,7 +6,9 @@ interface DateProps {
 interface MonthProps {
   monthDate: number;
 }
-
+interface DataProps {
+  type: string;
+}
 export const CalendarHeader = styled("div")`
   display: grid;
   grid-template-columns: repeat(7, calc(100% / 7));
@@ -66,7 +68,12 @@ export const DietBand = styled("div")`
   position: absolute;
   width: 100%;
   height: 5px;
-  background: #7f2bcc;
-  top: 45%;
-  margin-bottom: 5px;
+  background: ${(props: DataProps) =>
+    props.type === "diet"
+      ? "#7f2bcc"
+      : props.type === "drink"
+      ? "blue"
+      : "orange"};
+  top: ${(props: DataProps) =>
+    props.type === "diet" ? "50%" : props.type === "drink" ? "60%" : "70%"};
 `;
