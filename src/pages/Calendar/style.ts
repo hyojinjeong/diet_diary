@@ -41,6 +41,7 @@ export const DatesGrid = styled("div")`
 `;
 
 export const Dates = styled("div")`
+  position: relative;
   border-left: 1px solid #b1add6;
   border-bottom: 1px solid #b1add6;
   background-color: white;
@@ -59,4 +60,13 @@ export const DatesNum = styled("div")`
   color: ${(props: DateProps) => (props.isThisMonth ? "black" : "#b7b7b7")};
   font-weight: bold;
   margin: 0.5rem;
+`;
+
+export const DietBand = styled("div")`
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  background: #7f2bcc;
+  top: 45%;
+  margin-bottom: 5px;
 `;

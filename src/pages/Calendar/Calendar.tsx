@@ -3,10 +3,19 @@ import Layout from "../../components/Layout/Layout";
 import { Box } from "@mui/material";
 import DateNavigator from "../../components/DateNavigator/DateNavigator";
 import { DAYS } from "../../constants/date";
-import { CalendarHeader, Days, DatesGrid, Dates, DatesNum } from "./style";
+import {
+  CalendarHeader,
+  Days,
+  DatesGrid,
+  Dates,
+  DatesNum,
+  DietBand,
+} from "./style";
 import { getTodayYear, getTodayMonth, getMonthDate } from "../../utils/date";
+import diet from "../../diet.json";
 
 interface MonthDate {
+  key: string;
   year: number;
   month: number;
   date: number;
@@ -38,7 +47,7 @@ const Calendar = () => {
   useEffect(() => {
     setMonthDate(getMonthDate(curYear, curMonth));
   }, [curYear, curMonth]);
-
+  console.log();
   return (
     <Layout>
       <DateNavigator
@@ -64,6 +73,7 @@ const Calendar = () => {
               <DatesNum isThisMonth={dates.month === curMonth ? true : false}>
                 {dates.date}
               </DatesNum>
+              {diet.find((e) => e.dates === dates.key) && <DietBand />}
             </Dates>
           ))}
         </DatesGrid>
