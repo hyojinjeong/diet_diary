@@ -1,14 +1,5 @@
 import styled from "@emotion/styled";
 
-interface DateProps {
-  isThisMonth: boolean;
-}
-interface MonthProps {
-  monthDate: number;
-}
-interface DataProps {
-  type: string;
-}
 export const CalendarHeader = styled("div")`
   display: grid;
   grid-template-columns: repeat(7, calc(100% / 7));
@@ -42,7 +33,7 @@ export const DatesGrid = styled("div")`
   width: 100%;
 `;
 
-export const Dates = styled("div")`
+export const Dates = styled.div<{ monthDate: number }>`
   position: relative;
   border-left: 1px solid #b1add6;
   border-bottom: 1px solid #b1add6;
@@ -50,7 +41,7 @@ export const Dates = styled("div")`
   &:nth-of-type(7n) {
     border-right: 1px solid #b1add6;
   }
-  &:nth-of-type(${(props: MonthProps) => props.monthDate - 6}) {
+  &:nth-of-type(${({ monthDate }) => monthDate - 6}) {
     border-bottom-left-radius: 1rem;
   }
   &:last-of-type {
@@ -58,21 +49,21 @@ export const Dates = styled("div")`
   }
 `;
 
-export const DatesNum = styled("div")`
-  color: ${(props: DateProps) => (props.isThisMonth ? "black" : "#b7b7b7")};
+export const DatesNum = styled.div<{ isThisMonth: boolean }>`
+  color: ${({ isThisMonth }) => (isThisMonth ? "black" : "#b7b7b7")};
   font-weight: bold;
   margin: 6px;
 `;
 
-export const DietBand = styled("div")`
+export const DietBand = styled.div<{ type: string }>`
   width: 100%;
   height: 7%;
   border-radius: 10px;
   margin: 8px 0;
-  background: ${(props: DataProps) =>
-    props.type === "diet"
+  background: ${({ type }) =>
+    type === "diet"
       ? "#8359C57D"
-      : props.type === "drink"
+      : type === "drink"
       ? "#7D9BFB96"
       : "#ADDDD0A1"};
 `;
