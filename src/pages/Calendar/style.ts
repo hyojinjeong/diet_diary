@@ -66,9 +66,9 @@ export const DatesNum = styled("div")`
 
 export const DietBand = styled("div")`
   width: 100%;
-  height: 15%;
+  height: 7%;
   border-radius: 10px;
-  margin: 2px 0;
+  margin: 8px 0;
   background: ${(props: DataProps) =>
     props.type === "diet"
       ? "#8359C57D"
