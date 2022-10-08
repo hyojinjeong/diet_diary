@@ -25,12 +25,12 @@ interface MonthDate {
 }
 
 const Calendar = () => {
-  let month = getMonthDate(2022, 8);
   const [curYear, setCurYear] = useState<number>(getTodayYear());
   const [curMonth, setCurMonth] = useState<number>(getTodayMonth());
   const [monthDate, setMonthDate] = useState<Array<MonthDate>>(
     getMonthDate(curYear, curMonth)
   );
+  const [isDateSelect, setIsDateSelect] = useState<boolean>(false);
 
   const prevMonth = () => {
     const date = new Date(curYear, curMonth - 1, 1);
@@ -49,6 +49,20 @@ const Calendar = () => {
   useEffect(() => {
     setMonthDate(getMonthDate(curYear, curMonth));
   }, [curYear, curMonth]);
+
+  useEffect(() => {
+    if (isDateSelect) {
+      setMonthDate([
+        { key: "2022-10-02", year: 2022, month: 10, date: 2, day: 0 },
+        { key: "2022-10-03", year: 2022, month: 10, date: 3, day: 1 },
+        { key: "2022-10-04", year: 2022, month: 10, date: 4, day: 2 },
+        { key: "2022-10-05", year: 2022, month: 10, date: 5, day: 3 },
+        { key: "2022-10-06", year: 2022, month: 10, date: 6, day: 4 },
+        { key: "2022-10-07", year: 2022, month: 10, date: 7, day: 5 },
+        { key: "2022-10-08", year: 2022, month: 10, date: 8, day: 6 },
+      ]);
+    }
+  }, [isDateSelect]);
 
   return (
     <Layout>
@@ -72,7 +86,12 @@ const Calendar = () => {
         <DatesGrid>
           {monthDate.map((dates) => (
             <Dates monthDate={monthDate.length}>
-              <DatesNum isThisMonth={dates.month === curMonth ? true : false}>
+              <DatesNum
+                isThisMonth={dates.month === curMonth ? true : false}
+                onClick={() => {
+                  setIsDateSelect(true);
+                }}
+              >
                 {dates.date}
               </DatesNum>
               {diet.find((e) => e.dates === dates.key) && (
@@ -87,6 +106,18 @@ const Calendar = () => {
             </Dates>
           ))}
         </DatesGrid>
+        {isDateSelect && (
+          <Box
+            sx={{
+              height: "30%",
+              width: "30%",
+              backgroundColor: "pink",
+            }}
+            onClick={() => {
+              setIsDateSelect(false);
+            }}
+          ></Box>
+        )}
       </Box>
     </Layout>
   );
