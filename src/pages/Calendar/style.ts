@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { getTodayYear, getTodayMonth, getTodayDates } from "../../utils/date";
 
 export const CalendarHeader = styled("div")`
   display: grid;
@@ -32,7 +31,6 @@ export const DatesGrid = styled("div")`
   grid-template-columns: repeat(7, calc(100% / 7));
   grid-auto-rows: calc(calc(100vh - 15rem) / 6);
   width: 100%;
-  transition: all 2s;
 `;
 
 export const Dates = styled.div<{

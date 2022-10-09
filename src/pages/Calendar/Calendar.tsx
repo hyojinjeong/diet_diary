@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import { Box } from "@mui/material";
 import DateNavigator from "../../components/DateNavigator/DateNavigator";
@@ -17,7 +17,9 @@ import {
   getTodayMonth,
   getMonthDate,
   getTodayDates,
+  getTodayDay,
   formatDate,
+  getSelectWeek,
 } from "../../utils/date";
 import diet from "../../diet.json";
 import drink from "../../drink.json";
@@ -33,56 +35,56 @@ interface MonthDate {
 }
 
 export const Calendar = () => {
-  const [curYear, setCurYear] = useState<number>(getTodayYear());
-  const [curMonth, setCurMonth] = useState<number>(getTodayMonth());
-  const [current, setCurrent] = useState<string>(
-    formatDate(getTodayYear(), getTodayMonth(), getTodayDates())
-  );
+  const [curDate, setCurDate] = useState<MonthDate>({
+    key: formatDate(getTodayYear(), getTodayMonth(), getTodayDates()),
+    year: getTodayYear(),
+    month: getTodayMonth(),
+    date: getTodayDates(),
+    day: getTodayDay(),
+  });
   const [monthDate, setMonthDate] = useState<Array<MonthDate>>(
-    getMonthDate(curYear, curMonth)
+    getMonthDate(curDate.year, curDate.month)
   );
   const [isDateSelect, setIsDateSelect] = useState<boolean>(false);
 
   const prevMonth = () => {
-    const date = new Date(curYear, curMonth - 1, 1);
+    const date = new Date(curDate.year, curDate.month - 1, 1);
     date.setMonth(date.getMonth() - 1);
-    setCurMonth(date.getMonth() + 1);
-    setCurYear(date.getFullYear());
+    dateHandler(date.getFullYear(), date.getMonth() + 1, 1, date.getDay());
     setIsDateSelect(false);
   };
 
   const nextMonth = () => {
-    const date = new Date(curYear, curMonth - 1, 1);
+    const date = new Date(curDate.year, curDate.month - 1, 1);
     date.setMonth(date.getMonth() + 1);
-    setCurMonth(date.getMonth() + 1);
-    setCurYear(date.getFullYear());
+    dateHandler(date.getFullYear(), date.getMonth() + 1, 1, date.getDay());
     setIsDateSelect(false);
   };
 
   useEffect(() => {
-    setMonthDate(getMonthDate(curYear, curMonth));
-  }, [curYear, curMonth]);
-
-  useEffect(() => {
     if (isDateSelect) {
-      setMonthDate([
-        { key: "2022-10-02", year: 2022, month: 10, date: 2, day: 0 },
-        { key: "2022-10-03", year: 2022, month: 10, date: 3, day: 1 },
-        { key: "2022-10-04", year: 2022, month: 10, date: 4, day: 2 },
-        { key: "2022-10-05", year: 2022, month: 10, date: 5, day: 3 },
-        { key: "2022-10-06", year: 2022, month: 10, date: 6, day: 4 },
-        { key: "2022-10-07", year: 2022, month: 10, date: 7, day: 5 },
-        { key: "2022-10-08", year: 2022, month: 10, date: 8, day: 6 },
-      ]);
+      setMonthDate(
+        getSelectWeek(monthDate, curDate.month, curDate.date, curDate.day)
+      );
     } else {
-      setMonthDate(getMonthDate(curYear, curMonth));
+      setMonthDate(getMonthDate(curDate.year, curDate.month));
     }
-  }, [curYear, curMonth, isDateSelect]);
+  }, [curDate, isDateSelect]);
 
-  const dateHandler = (key: string) => {
-    console.log("datehandler");
+  const dateHandler = (
+    year: number,
+    month: number,
+    date: number,
+    day: number
+  ) => {
+    setCurDate({
+      key: formatDate(year, month, date),
+      year: year,
+      month: month,
+      date: date,
+      day: day,
+    });
     setIsDateSelect(true);
-    setCurrent(key);
   };
 
   return (
@@ -90,12 +92,11 @@ export const Calendar = () => {
       <DateNavigator
         prevMonth={prevMonth}
         nextMonth={nextMonth}
-        curMonth={curMonth}
-        curYear={curYear}
+        curMonth={curDate.month}
+        curYear={curDate.year}
       />
       <Box
         sx={{
-          height: "calc(100% - 9rem)",
           width: "100%",
           display: "flex",
           flexDirection: "column",
@@ -111,12 +112,14 @@ export const Calendar = () => {
           {monthDate.map((dates) => (
             <Dates
               monthDate={monthDate.length}
-              isCurrent={dates.key === current ? true : false}
+              isCurrent={dates.key === curDate.key ? true : false}
               onClick={() => {
-                dateHandler(dates.key);
+                dateHandler(dates.year, dates.month, dates.date, dates.day);
               }}
             >
-              <DatesNum isThisMonth={dates.month === curMonth ? true : false}>
+              <DatesNum
+                isThisMonth={dates.month === curDate.month ? true : false}
+              >
                 {dates.date}
               </DatesNum>
               {diet.find((e) => e.dates === dates.key) && (

@@ -1,3 +1,11 @@
+interface MonthDate {
+  key: string;
+  year: number;
+  month: number;
+  date: number;
+  day: number;
+}
+
 const getTodayYear = () => {
   return new Date().getFullYear();
 };
@@ -8,6 +16,10 @@ const getTodayMonth = () => {
 
 const getTodayDates = () => {
   return new Date().getDate();
+};
+
+const getTodayDay = () => {
+  return new Date().getDay();
 };
 
 const formatDate = (
@@ -67,6 +79,21 @@ const getMonthDate = (year: number, month: number) => {
   });
 };
 
+const getSelectWeek = (
+  monthDate: Array<MonthDate>,
+  curMonth: number,
+  curDate: number,
+  curDay: number
+): Array<MonthDate> => {
+  const startIdx =
+    monthDate.findIndex((el) => el.date === curDate && el.month === curMonth) -
+    curDay;
+  const result = monthDate.slice(startIdx, startIdx + 7);
+  console.log("monthDate", monthDate);
+  console.log(result);
+  return result;
+};
+
 export {
   getTodayYear,
   getTodayMonth,
@@ -74,4 +101,6 @@ export {
   formatDate,
   getBeforeDate,
   getMonthDate,
+  getSelectWeek,
+  getTodayDay,
 };
