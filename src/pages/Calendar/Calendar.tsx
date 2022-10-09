@@ -25,6 +25,7 @@ import diet from "../../diet.json";
 import drink from "../../drink.json";
 import body from "../../drink.json";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ResultComponent from "../../components/ResultComponent/ResultComponent";
 
 interface MonthDate {
   key: string;
@@ -135,14 +136,17 @@ export const Calendar = () => {
           ))}
         </DatesGrid>
         {isDateSelect && (
-          <ExpandBtn
-            onClick={() => {
-              setIsDateSelect(false);
-            }}
-          >
-            달력 펼치기
-            <ExpandMoreIcon sx={{ marginLeft: "10px" }} />
-          </ExpandBtn>
+          <>
+            <ExpandBtn
+              onClick={() => {
+                setIsDateSelect(false);
+              }}
+            >
+              달력 펼치기
+              <ExpandMoreIcon sx={{ marginLeft: "10px" }} />
+            </ExpandBtn>
+            <ResultComponent />
+          </>
         )}
       </Box>
     </Layout>

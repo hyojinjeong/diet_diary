@@ -28,7 +28,7 @@ const Layout = (props: Props) => {
             width: "100%",
             display: "flex",
             flexDirection: "column",
-            alignItems: "flex-end",
+            alignContent: "center",
           }}
         >
           {props.children}

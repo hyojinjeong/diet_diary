@@ -31,6 +31,8 @@ export const DatesGrid = styled("div")`
   grid-template-columns: repeat(7, calc(100% / 7));
   grid-auto-rows: calc(calc(100vh - 15rem) / 6);
   width: 100%;
+  align-itmes: center;
+  align-content: space-around;
 `;
 
 export const Dates = styled.div<{
@@ -40,7 +42,7 @@ export const Dates = styled.div<{
   position: relative;
   border-left: 1px solid #b1add6;
   border-bottom: 1px solid #b1add6;
-  background-color: ${({ isCurrent }) => (isCurrent ? "#f5f7fb" : "white")};
+  background-color: ${({ isCurrent }) => (isCurrent ? "#EFEFEF" : "white")};
   cursor: pointer;
   &:nth-of-type(7n) {
     border-right: 1px solid #b1add6;
@@ -50,9 +52,6 @@ export const Dates = styled.div<{
   }
   &:last-of-type {
     border-bottom-right-radius: 1rem;
-  }
-  &:hover {
-    background-color: #f6f2ff;
   }
 `;
 
@@ -79,7 +78,7 @@ export const ExpandBtn = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1rem;
+  margin: 1rem 0;
   font-weight: bold;
   cursor: pointer;
 `;
