@@ -5,13 +5,14 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import React from "react";
 
 interface HeaderProps {
   isOpen: boolean;
   toggleSidebar: () => void;
 }
 
-const Header = ({ isOpen, toggleSidebar }: HeaderProps) => {
+const Header = React.memo(({ toggleSidebar }: HeaderProps) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed" sx={{ backgroundColor: "#8F83D6" }}>
@@ -36,6 +37,6 @@ const Header = ({ isOpen, toggleSidebar }: HeaderProps) => {
       </AppBar>
     </Box>
   );
-};
+});
 
 export default Header;

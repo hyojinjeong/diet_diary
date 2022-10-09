@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { getTodayYear, getTodayMonth, getTodayDates } from "../../utils/date";
 
 export const CalendarHeader = styled("div")`
   display: grid;
@@ -31,13 +32,18 @@ export const DatesGrid = styled("div")`
   grid-template-columns: repeat(7, calc(100% / 7));
   grid-auto-rows: calc(calc(100vh - 15rem) / 6);
   width: 100%;
+  transition: all 2s;
 `;
 
-export const Dates = styled.div<{ monthDate: number }>`
+export const Dates = styled.div<{
+  monthDate: number;
+  isCurrent: boolean;
+}>`
   position: relative;
   border-left: 1px solid #b1add6;
   border-bottom: 1px solid #b1add6;
-  background-color: white;
+  background-color: ${({ isCurrent }) => (isCurrent ? "#f5f7fb" : "white")};
+  cursor: pointer;
   &:nth-of-type(7n) {
     border-right: 1px solid #b1add6;
   }
@@ -46,6 +52,9 @@ export const Dates = styled.div<{ monthDate: number }>`
   }
   &:last-of-type {
     border-bottom-right-radius: 1rem;
+  }
+  &:hover {
+    background-color: #f6f2ff;
   }
 `;
 
@@ -66,4 +75,13 @@ export const DietBand = styled.div<{ type: string }>`
       : type === "drink"
       ? "#7D9BFB96"
       : "#ADDDD0A1"};
+`;
+
+export const ExpandBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  font-weight: bold;
+  cursor: pointer;
 `;

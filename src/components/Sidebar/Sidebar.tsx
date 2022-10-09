@@ -10,13 +10,14 @@ import HomeIcon from "@mui/icons-material/Home";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { LogoMenu } from "./style";
+import React from "react";
 
 interface SidebarProps {
   isOpen: boolean;
   toggleSidebar: () => void;
 }
 
-const Sidebar = ({ isOpen, toggleSidebar }: SidebarProps) => {
+const Sidebar = React.memo(({ isOpen, toggleSidebar }: SidebarProps) => {
   return (
     <Drawer
       anchor={"left"}
@@ -60,6 +61,6 @@ const Sidebar = ({ isOpen, toggleSidebar }: SidebarProps) => {
       </Box>
     </Drawer>
   );
-};
+});
 
 export default Sidebar;

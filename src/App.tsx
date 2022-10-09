@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import Calendar from "./pages/Calendar/Calendar";
+import { Calendar } from "./pages/Calendar/Calendar";
 
 function App() {
   return (

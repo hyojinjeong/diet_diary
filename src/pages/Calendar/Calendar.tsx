@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import { Box } from "@mui/material";
 import DateNavigator from "../../components/DateNavigator/DateNavigator";
@@ -10,11 +10,19 @@ import {
   Dates,
   DatesNum,
   DietBand,
+  ExpandBtn,
 } from "./style";
-import { getTodayYear, getTodayMonth, getMonthDate } from "../../utils/date";
+import {
+  getTodayYear,
+  getTodayMonth,
+  getMonthDate,
+  getTodayDates,
+  formatDate,
+} from "../../utils/date";
 import diet from "../../diet.json";
 import drink from "../../drink.json";
 import body from "../../drink.json";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 interface MonthDate {
   key: string;
@@ -24,9 +32,12 @@ interface MonthDate {
   day: number;
 }
 
-const Calendar = () => {
+export const Calendar = () => {
   const [curYear, setCurYear] = useState<number>(getTodayYear());
   const [curMonth, setCurMonth] = useState<number>(getTodayMonth());
+  const [current, setCurrent] = useState<string>(
+    formatDate(getTodayYear(), getTodayMonth(), getTodayDates())
+  );
   const [monthDate, setMonthDate] = useState<Array<MonthDate>>(
     getMonthDate(curYear, curMonth)
   );
@@ -37,6 +48,7 @@ const Calendar = () => {
     date.setMonth(date.getMonth() - 1);
     setCurMonth(date.getMonth() + 1);
     setCurYear(date.getFullYear());
+    setIsDateSelect(false);
   };
 
   const nextMonth = () => {
@@ -44,6 +56,7 @@ const Calendar = () => {
     date.setMonth(date.getMonth() + 1);
     setCurMonth(date.getMonth() + 1);
     setCurYear(date.getFullYear());
+    setIsDateSelect(false);
   };
 
   useEffect(() => {
@@ -61,8 +74,16 @@ const Calendar = () => {
         { key: "2022-10-07", year: 2022, month: 10, date: 7, day: 5 },
         { key: "2022-10-08", year: 2022, month: 10, date: 8, day: 6 },
       ]);
+    } else {
+      setMonthDate(getMonthDate(curYear, curMonth));
     }
-  }, [isDateSelect]);
+  }, [curYear, curMonth, isDateSelect]);
+
+  const dateHandler = (key: string) => {
+    console.log("datehandler");
+    setIsDateSelect(true);
+    setCurrent(key);
+  };
 
   return (
     <Layout>
@@ -76,6 +97,9 @@ const Calendar = () => {
         sx={{
           height: "calc(100% - 9rem)",
           width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
         }}
       >
         <CalendarHeader>
@@ -85,13 +109,14 @@ const Calendar = () => {
         </CalendarHeader>
         <DatesGrid>
           {monthDate.map((dates) => (
-            <Dates monthDate={monthDate.length}>
-              <DatesNum
-                isThisMonth={dates.month === curMonth ? true : false}
-                onClick={() => {
-                  setIsDateSelect(true);
-                }}
-              >
+            <Dates
+              monthDate={monthDate.length}
+              isCurrent={dates.key === current ? true : false}
+              onClick={() => {
+                dateHandler(dates.key);
+              }}
+            >
+              <DatesNum isThisMonth={dates.month === curMonth ? true : false}>
                 {dates.date}
               </DatesNum>
               {diet.find((e) => e.dates === dates.key) && (
@@ -107,16 +132,14 @@ const Calendar = () => {
           ))}
         </DatesGrid>
         {isDateSelect && (
-          <Box
-            sx={{
-              height: "30%",
-              width: "30%",
-              backgroundColor: "pink",
-            }}
+          <ExpandBtn
             onClick={() => {
               setIsDateSelect(false);
             }}
-          ></Box>
+          >
+            달력 펼치기
+            <ExpandMoreIcon sx={{ marginLeft: "10px" }} />
+          </ExpandBtn>
         )}
       </Box>
     </Layout>

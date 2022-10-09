@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
 import { Container } from "@mui/material";
 import { ContentWrapper } from "./style";
+import React from "react";
 
 interface Props {
   children: JSX.Element | JSX.Element[];

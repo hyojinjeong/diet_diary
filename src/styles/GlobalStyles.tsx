@@ -2,7 +2,7 @@ import { Global, css } from "@emotion/react";
 
 const style = css`
   html {
-    background-color: #f5f7fb;
+    background-color: white;
   }
   body,
   body::before,
