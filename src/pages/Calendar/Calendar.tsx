@@ -35,6 +35,19 @@ interface MonthDate {
   day: number;
 }
 
+interface Diets {
+  breakfast?: DietsContent;
+  lunch?: DietsContent;
+  dinner?: DietsContent;
+}
+interface DietsContent {
+  title?: string;
+  time?: string;
+  memo?: string;
+  score?: number;
+  photo?: string;
+}
+
 export const Calendar = () => {
   const [curDate, setCurDate] = useState<MonthDate>({
     key: formatDate(getTodayYear(), getTodayMonth(), getTodayDates()),
@@ -47,6 +60,29 @@ export const Calendar = () => {
     getMonthDate(curDate.year, curDate.month)
   );
   const [isDateSelect, setIsDateSelect] = useState<boolean>(false);
+  const [dietResult, setDietResult] = useState<Diets>({
+    breakfast: {
+      title: "brunch",
+      time: "09:00",
+      memo: "It's good.",
+      score: 3,
+      photo: "Y",
+    },
+    lunch: {
+      title: "brunch",
+      time: "09:00",
+      memo: "It's good.",
+      score: 3,
+      photo: "Y",
+    },
+    dinner: {
+      title: "brunch",
+      time: "20:00",
+      memo: "It's good.",
+      score: 3,
+      photo: "Y",
+    },
+  });
 
   const prevMonth = () => {
     const date = new Date(curDate.year, curDate.month - 1, 1);
@@ -67,6 +103,8 @@ export const Calendar = () => {
       setMonthDate(
         getSelectWeek(monthDate, curDate.month, curDate.date, curDate.day)
       );
+      const result = diet.filter((e) => e.dates === curDate.key);
+      setDietResult(result[0]?.diets);
     } else {
       setMonthDate(getMonthDate(curDate.year, curDate.month));
     }
@@ -145,7 +183,7 @@ export const Calendar = () => {
               달력 펼치기
               <ExpandMoreIcon sx={{ marginLeft: "10px" }} />
             </ExpandBtn>
-            <ResultComponent />
+            <ResultComponent diets={dietResult} />
           </>
         )}
       </Box>

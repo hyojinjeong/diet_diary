@@ -12,12 +12,6 @@
         "memo": "It's good.",
         "score": 3,
         "photo": "Y"
-      },
-      "dinner": {
-        "time": "20:00",
-        "memo": "It's good.",
-        "score": 3,
-        "photo": "Y"
       }
     }
   },
@@ -34,19 +28,13 @@
         "memo": "It's good.",
         "score": 3,
         "photo": "Y"
-      },
-      "dinner": {
-        "time": "20:00",
-        "memo": "It's good.",
-        "score": 3,
-        "photo": "Y"
       }
     }
   },
   {
     "year": 2022,
     "month": 10,
-    "dates": "2022-10-07",
+    "dates": "2022-10-06",
     "user": "jn0830",
     "type": "diet",
     "diets": {
@@ -217,6 +205,12 @@
         "score": 3,
         "photo": "Y"
       },
+      "lunch": {
+        "time": "13:00",
+        "memo": "It's good.",
+        "score": 3,
+        "photo": "Y"
+      },
       "dinner": {
         "time": "13:00",
         "memo": "It's good.",
@@ -235,12 +229,6 @@
       "breakfast": {
         "title": "brunch",
         "time": "09:00",
-        "memo": "It's good.",
-        "score": 3,
-        "photo": "Y"
-      },
-      "dinner": {
-        "time": "13:00",
         "memo": "It's good.",
         "score": 3,
         "photo": "Y"

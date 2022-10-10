@@ -7,11 +7,27 @@ import {
 } from "./style";
 import { Box } from "@mui/material";
 import DietItem from "../DietItem/DietItem";
-interface Props {
-  type: string;
+import MenuButton from "../MenuButton/MenuButton";
+
+interface Diets {
+  breakfast?: DietsContent;
+  lunch?: DietsContent;
+  dinner?: DietsContent;
+}
+interface DietsContent {
+  title?: string;
+  time?: string;
+  memo?: string;
+  score?: number;
+  photo?: string;
 }
 
-const ResultComponent = () => {
+interface Props {
+  diets: Diets;
+}
+
+const ResultComponent = ({ diets }: Props) => {
+  console.log("diets", diets);
   return (
     <Box
       sx={{
@@ -34,18 +50,24 @@ const ResultComponent = () => {
                 width: "100%",
                 height: "calc(100% - 1.7rem)",
                 display: "flex",
-                justifyContent: "space-around",
                 alignItems: "center",
               }}
             >
-              <DietItem type={"morning"} />
-              <DietItem type={"lunch"} />
-              <DietItem type={"dinner"} />
+              {diets ? (
+                <>
+                  {diets?.breakfast && <DietItem type={"morning"} />}
+                  {diets?.lunch && <DietItem type={"lunch"} />}
+                  {diets?.dinner && <DietItem type={"dinner"} />}
+                </>
+              ) : (
+                "결과가 없습니다."
+              )}
             </Box>
           </Box>
           <Box>
             <ContentTitle>
               <span>💧 물</span>
+              <MenuButton />
             </ContentTitle>
             <Box
               sx={{
@@ -54,7 +76,7 @@ const ResultComponent = () => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                padding: "1rem",
+                padding: "0 1rem 1rem 1rem",
               }}
             >
               <Box
@@ -64,7 +86,7 @@ const ResultComponent = () => {
                   display: "flex",
                   flexDirection: "column",
                   fontWeight: "bold",
-                  justifyContent: "space-between",
+                  justifyContent: "space-around",
                 }}
               >
                 <div>목표량 : 1000mL</div>
@@ -78,12 +100,13 @@ const ResultComponent = () => {
           <Box>
             <ContentTitle>
               <span>🏃🏻‍♂️ 신체</span>
+              <MenuButton />
             </ContentTitle>
             <Box
               sx={{
                 width: "100%",
                 height: "calc(100% - 1.7rem)",
-                padding: "1rem",
+                padding: "0 1rem 1rem 1rem",
               }}
             >
               <Box
@@ -93,11 +116,12 @@ const ResultComponent = () => {
                   display: "flex",
                   flexDirection: "column",
                   fontWeight: "bold",
-                  justifyContent: "space-between",
+                  justifyContent: "space-around",
                 }}
               >
-                <div>목표량 : 1000mL</div>
-                <div>섭취량 : 500mL</div>
+                <div>체중 : 47kg</div>
+                <div>골격근량 : 20kg</div>
+                <div>체지방량 : 5kg</div>
               </Box>
             </Box>
           </Box>

@@ -4,9 +4,9 @@ export const Wrapper = styled.div`
   width: 30%;
   height: calc(100% - 1rem);
   border-radius: 10px;
-  margin-top: 0.5rem;
+  margin: 0.5rem 1rem 0 1rem;
   border: 1px solid #463e8f;
-  cursor: focus;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;

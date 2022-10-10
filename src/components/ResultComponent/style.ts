@@ -21,17 +21,11 @@ export const ContentGrid = styled.div`
 `;
 
 export const ContentTitle = styled.div`
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   font-weight: bold;
   font-size: 1.2rem;
-`;
-
-export const DietItem = styled.div`
-  width: 30%;
-  height: calc(100% - 1rem);
-  border-radius: 10px;
-  margin-top: 0.5rem;
-  border: 1px solid #463e8f;
 `;
 
 export const GaugeBarWrapper = styled.div`

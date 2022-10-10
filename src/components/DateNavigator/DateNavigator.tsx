@@ -18,8 +18,8 @@ const DateNavigator = ({ prevMonth, nextMonth, curYear, curMonth }: Props) => {
         alignItems: "center",
         display: "flex",
         width: "100%",
-        paddingTop: { xs: "1.5rem", sm: "1.5rem", md: "3rem" },
-        paddingBottom: { xs: "1.5rem", sm: "1.5rem", md: "3rem" },
+        paddingTop: { xs: "2rem", sm: "2rem", md: "3rem" },
+        paddingBottom: { xs: "2rem", sm: "2rem", md: "3rem" },
       }}
     >
       <CurrentYearMonth>{`${curYear}년 ${curMonth}월`}</CurrentYearMonth>
