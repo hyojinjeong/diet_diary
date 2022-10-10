@@ -14,12 +14,12 @@ const DateNavigator = ({ prevMonth, nextMonth, curYear, curMonth }: Props) => {
   return (
     <Box
       sx={{
-        height: "3rem",
+        height: { xs: "2rem", sm: "2rem", md: "3rem" },
         alignItems: "center",
         display: "flex",
         width: "100%",
-        paddingTop: "3rem",
-        paddingBottom: "3rem",
+        paddingTop: { xs: "1.5rem", sm: "1.5rem", md: "3rem" },
+        paddingBottom: { xs: "1.5rem", sm: "1.5rem", md: "3rem" },
       }}
     >
       <CurrentYearMonth>{`${curYear}년 ${curMonth}월`}</CurrentYearMonth>

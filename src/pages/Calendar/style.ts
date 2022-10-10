@@ -42,7 +42,7 @@ export const Dates = styled.div<{
   position: relative;
   border-left: 1px solid #b1add6;
   border-bottom: 1px solid #b1add6;
-  background-color: ${({ isCurrent }) => (isCurrent ? "#EFEFEF" : "white")};
+  background-color: ${({ isCurrent }) => (isCurrent ? "#F6F6F6" : "white")};
   cursor: pointer;
   &:nth-of-type(7n) {
     border-right: 1px solid #b1add6;
