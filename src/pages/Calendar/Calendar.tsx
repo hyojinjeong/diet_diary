@@ -42,10 +42,10 @@ interface Diets {
 }
 interface DietsContent {
   title?: string;
-  time?: string;
-  memo?: string;
-  score?: number;
-  photo?: string;
+  time: string;
+  memo: string;
+  score: number;
+  photo: string;
 }
 
 export const Calendar = () => {
@@ -144,12 +144,13 @@ export const Calendar = () => {
       >
         <CalendarHeader>
           {DAYS.map((day) => (
-            <Days>{day}</Days>
+            <Days key={day}>{day}</Days>
           ))}
         </CalendarHeader>
         <DatesGrid>
-          {monthDate.map((dates) => (
+          {monthDate.map((dates, idx) => (
             <Dates
+              key={dates.key}
               monthDate={monthDate.length}
               isCurrent={dates.key === curDate.key ? true : false}
               onClick={() => {
