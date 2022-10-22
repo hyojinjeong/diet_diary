@@ -8,9 +8,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import React, { useState } from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
+import DialogActions from "@mui/material/DialogActions";
+import CloseIcon from "@mui/icons-material/Close";
 
 interface HeaderProps {
   isOpen: boolean;
@@ -56,30 +57,52 @@ const Header = React.memo(({ toggleSidebar }: HeaderProps) => {
           <Button color="inherit" onClick={handleClickOpen}>
             Login
           </Button>
+          <IconButton
+            aria-label="close"
+            sx={{
+              position: "absolute",
+              right: 8,
+              top: 8,
+              color: (theme) => theme.palette.grey[500],
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
           <Dialog open={open} onClose={handleClose}>
-            <DialogTitle>Login</DialogTitle>
-            <DialogContent>
-              {/* <DialogContentText>
-                To subscribe to this website, please enter your email address
-                here. We will send updates occasionally.
-              </DialogContentText> */}
+            <DialogTitle>
+              Login
+              <IconButton
+                aria-label="close"
+                sx={{
+                  position: "absolute",
+                  right: 10,
+                  top: 10,
+                }}
+              >
+                <CloseIcon />
+              </IconButton>
+            </DialogTitle>
+            <DialogContent dividers>
               <TextField
-                autoFocus
-                margin="dense"
-                id="name"
-                label="Email Address"
-                type="email"
-                fullWidth
+                id="standard-basic"
+                label="Email"
                 variant="standard"
+                margin="normal"
+                fullWidth
               />
               <TextField
-                id="standard-password-input"
+                id="standard-basic"
                 label="Password"
-                type="password"
-                autoComplete="current-password"
                 variant="standard"
+                margin="normal"
+                fullWidth
+                error={true}
+                helperText="Incorrect entry."
               />
             </DialogContent>
+            <DialogActions>
+              <Button autoFocus>confirm</Button>
+            </DialogActions>
           </Dialog>
         </Toolbar>
       </AppBar>
