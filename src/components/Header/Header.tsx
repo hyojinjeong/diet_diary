@@ -1,21 +1,16 @@
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import React, { useState } from "react";
-import Dialog from "@mui/material/Dialog";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
-import TextField from "@mui/material/TextField";
-import DialogActions from "@mui/material/DialogActions";
-import CloseIcon from "@mui/icons-material/Close";
+import { useState } from "react";
+import Register from "../Register/Register";
+import Login from "../Login/Login";
 
 interface HeaderProps {
-  isOpen: boolean;
   toggleSidebar: () => void;
+  isOpen: boolean;
 }
 
 export interface SimpleDialogProps {
@@ -24,20 +19,23 @@ export interface SimpleDialogProps {
   onClose: (value: string) => void;
 }
 
-const Header = React.memo(({ toggleSidebar }: HeaderProps) => {
-  const [open, setOpen] = useState<boolean>(false);
+const Header = ({ toggleSidebar }: HeaderProps) => {
+  const [loginOpen, setLoginOpen] = useState<boolean>(false);
+  const [regOpen, setRegOpen] = useState<boolean>(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleLoginOpen = () => {
+    setLoginOpen((prev) => !prev);
   };
-
-  const handleClose = (value: string) => {
-    setOpen(false);
+  const handleRegOpen = () => {
+    setRegOpen((prev) => !prev);
   };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed" sx={{ backgroundColor: "#8F83D6" }}>
+      <AppBar
+        position="fixed"
+        sx={{ backgroundColor: (theme) => theme.palette.primary.main }}
+      >
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <IconButton
             size="large"
@@ -49,14 +47,14 @@ const Header = React.memo(({ toggleSidebar }: HeaderProps) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1 }}
-          ></Typography>
-          <Button color="inherit" onClick={handleClickOpen}>
-            Login
-          </Button>
+          <Box>
+            <Button color="inherit" onClick={handleRegOpen}>
+              회원가입
+            </Button>
+            <Button color="inherit" onClick={handleLoginOpen}>
+              로그인
+            </Button>
+          </Box>
           <IconButton
             aria-label="close"
             sx={{
@@ -65,49 +63,13 @@ const Header = React.memo(({ toggleSidebar }: HeaderProps) => {
               top: 8,
               color: (theme) => theme.palette.grey[500],
             }}
-          >
-            <CloseIcon />
-          </IconButton>
-          <Dialog open={open} onClose={handleClose}>
-            <DialogTitle>
-              Login
-              <IconButton
-                aria-label="close"
-                sx={{
-                  position: "absolute",
-                  right: 10,
-                  top: 10,
-                }}
-              >
-                <CloseIcon />
-              </IconButton>
-            </DialogTitle>
-            <DialogContent dividers>
-              <TextField
-                id="standard-basic"
-                label="Email"
-                variant="standard"
-                margin="normal"
-                fullWidth
-              />
-              <TextField
-                id="standard-basic"
-                label="Password"
-                variant="standard"
-                margin="normal"
-                fullWidth
-                error={true}
-                helperText="Incorrect entry."
-              />
-            </DialogContent>
-            <DialogActions>
-              <Button autoFocus>confirm</Button>
-            </DialogActions>
-          </Dialog>
+          ></IconButton>
+          <Register regOpen={regOpen} handleRegOpen={handleRegOpen} />
+          <Login loginOpen={loginOpen} handleLoginOpen={handleLoginOpen} />
         </Toolbar>
       </AppBar>
     </Box>
   );
-});
+};
 
 export default Header;
