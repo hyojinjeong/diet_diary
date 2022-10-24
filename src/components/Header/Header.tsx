@@ -55,7 +55,7 @@ const Header = ({ toggleSidebar }: HeaderProps) => {
               로그인
             </Button>
           </Box>
-          <IconButton
+          {/* <IconButton
             aria-label="close"
             sx={{
               position: "absolute",
@@ -63,7 +63,7 @@ const Header = ({ toggleSidebar }: HeaderProps) => {
               top: 8,
               color: (theme) => theme.palette.grey[500],
             }}
-          ></IconButton>
+          ></IconButton> */}
           <Register regOpen={regOpen} handleRegOpen={handleRegOpen} />
           <Login loginOpen={loginOpen} handleLoginOpen={handleLoginOpen} />
         </Toolbar>
