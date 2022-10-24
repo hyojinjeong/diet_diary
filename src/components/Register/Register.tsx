@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Dialog from "@mui/material/Dialog";
@@ -7,7 +6,9 @@ import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import DialogActions from "@mui/material/DialogActions";
 import CloseIcon from "@mui/icons-material/Close";
-import { useForm, Resolver } from "react-hook-form";
+import { useForm } from "react-hook-form";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
 
 interface RegisterProps {
   regOpen: boolean;
@@ -20,14 +21,16 @@ type FormValues = {
 };
 
 const Register = ({ regOpen, handleRegOpen }: RegisterProps) => {
-  // const [email, setEmail] = useState<string>();
-  // const [password, setPassword] = useState<string>();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormValues>();
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const { register, handleSubmit } = useForm<FormValues>();
+  const onSubmit = handleSubmit(async (data) => {
+    const user = await createUserWithEmailAndPassword(
+      auth,
+      data.email,
+      data.password
+    );
+    console.log(user);
+    handleRegOpen();
+  });
 
   return (
     <Dialog open={regOpen}>
@@ -60,12 +63,12 @@ const Register = ({ regOpen, handleRegOpen }: RegisterProps) => {
             label="Password"
             variant="outlined"
             fullWidth
+            type="password"
             error={false}
             sx={{ margin: "10px 0" }}
             {...register("password")}
           />
         </DialogContent>
-
         <DialogActions sx={{ padding: "16px 24px" }}>
           <Button variant="contained" onClick={onSubmit}>
             확인
