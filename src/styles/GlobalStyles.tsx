@@ -29,7 +29,6 @@ const style = css`
   input {
     display: flex;
     outline: none;
-    padding-left: 10px;
   }
 `;
 

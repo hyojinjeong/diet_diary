@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Button, Stack, TextField, IconButton, Dialog, DialogContent, DialogTitle, DialogActions } from "@mui/material";
+import { Button, Stack, TextField, IconButton, Dialog, DialogContent, DialogTitle, DialogActions, Box } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useForm } from "react-hook-form";
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -25,7 +25,7 @@ const formSchema = yup.object().shape({
   email: yup.string().email("메일의 형식이 잘못되었습니다.").required("* 필수 입력 값 입니다."),
   nickname: yup.string().required("* 필수 입력 값 입니다."),
   password: yup.string().min(6, "최소 6자리 이상 입력해주세요.").required("* 필수 입력 값 입니다.").max(15, "최대 15자리 까지만 입력해주세요."),
-  passwordConfirm: yup.string().oneOf([yup.ref('password'), null], "비밀번호가 일치하지 않습니다.")
+  passwordConfirm: yup.string().required("비밀번호를 확인해주세요.").oneOf([yup.ref('password'), null], "비밀번호가 일치하지 않습니다.")
 });
 
 const Register = ({ regOpen, handleRegOpen }: RegisterProps) => {
@@ -94,25 +94,33 @@ const Register = ({ regOpen, handleRegOpen }: RegisterProps) => {
         </IconButton>
       </DialogTitle>
       <form>
-        <DialogContent dividers sx={{ maxWidth: "476px", padding: "16px"}}>
-          <Stack direction="row">
-            <TextField inputRef={emailVal} label="이메일" variant="outlined" fullWidth sx={{ margin: "10px 0" }} error={Boolean(formState.errors.email)} {...register("email")} />
-            <Button variant="contained" size="medium"  sx={{ ml: 1, boxSizing: 'content-box', margin: "10px 0 10px 10px"}} onClick={checkIdDuplicate}>
-              중복확인
-            </Button>
-          </Stack>
+        <DialogContent dividers sx={{ minWidth: "476px", maxWidth: "476px", padding: "16px"}}>
+          <Box sx={{marginBottom: "16px"}}>
+            <Stack direction="row">
+              <TextField inputRef={emailVal} label="이메일" variant="outlined" size="small" fullWidth
+                error={Boolean(formState.errors.email)} {...register("email")} />
+                <Button variant="contained" size="small"  sx={{ ml: 1, boxSizing: 'content-box'}} onClick={checkIdDuplicate}>
+                중복확인
+              </Button>
+            </Stack>
           <ErrorMessage>{formState.errors.email?.message}</ErrorMessage>
-          <Stack direction="row">
-          <TextField inputRef={nicknameVal} label="닉네임" variant="outlined" fullWidth sx={{ margin: "10px 0" }} error={Boolean(formState.errors.nickname)} {...register("nickname")} />
-          <Button variant="contained" size="medium" sx={{ ml: 1, boxSizing: 'content-box',  margin: "10px 0 10px 10px"}} onClick={checkNicknameDuplicate}>
+          </Box>
+          <Box sx={{marginBottom: "16px"}}>    
+            <Stack direction="row">
+              <TextField inputRef={nicknameVal} label="닉네임" variant="outlined" size="small" fullWidth inputProps={{margin: "dense"}} 
+              error={Boolean(formState.errors.nickname)} {...register("nickname")} />
+              <Button variant="contained" size="small" sx={{ ml: 1, boxSizing: 'content-box'}} onClick={checkNicknameDuplicate}>
               중복확인
-            </Button>
-          </Stack>
+              </Button>
+            </Stack>
           <ErrorMessage>{formState.errors.nickname?.message}</ErrorMessage>
-          <TextField label="비밀번호" variant="outlined" fullWidth type="password" error={Boolean(formState.errors.password)} sx={{ margin: "10px 0" }} {...register("password")} />
-          <ErrorMessage>{formState.errors.password?.message}</ErrorMessage>
-          <TextField label="비밀번호 확인" variant="outlined" fullWidth type="password" error={Boolean(formState.errors.password)} sx={{ margin: "10px 0" }} {...register("passwordConfirm")} />
-          <ErrorMessage>{formState.errors.passwordConfirm?.message}</ErrorMessage>
+          </Box>
+          <Box sx={{marginBottom: "16px"}}>
+            <TextField label="비밀번호" variant="outlined" size="small" fullWidth type="password" error={Boolean(formState.errors.password)} {...register("password")} />
+            <ErrorMessage>{formState.errors.password?.message}</ErrorMessage>
+          </Box>       
+            <TextField label="비밀번호 확인" variant="outlined" size="small" fullWidth type="password" error={Boolean(formState.errors.password)} {...register("passwordConfirm")} />
+            <ErrorMessage>{formState.errors.passwordConfirm?.message}</ErrorMessage> 
         </DialogContent>
         <DialogActions sx={{ padding: "16px" }}>
           <Button variant="contained" onClick={onSubmit}>
